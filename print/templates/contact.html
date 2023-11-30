@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+<!--=================================================================-->
+{% block title %}極小画廊_お問い合わせ{% endblock %}
+{% block title2 %}極小画廊{% endblock %}
+{% block description %}お問い合わせ{% endblock %}
+<!--=================================================================-->
+{% block contents %}
+
+<div style="width: 50%; margin: 0 auto; text-align: center;">
+    <strong>連絡を取る場合は以下のフォームからお願いします</strong>
+    <br><br>
+    <!--フォームの送信が成功した時のメッセージを表示するためのコード-->
+    <!--requestにmessageオブジェクトが存在している場合-->
+    {% if messages %}<!--viewsのmessages.successと対応している-->
+    <ul style="list-style: none;">
+        <!--forでmessage取り出す-->
+        {% for message in messages %}
+        <!--message.tagsが存在する場合はclass属性にCSSのクラスを設定-->
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %} style="color:red;">
+            {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <!--以下、フォーム表示-->
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div >
+                {{ field.label_tag }}
+                {{ field }}
+            </div>
+        {% endfor %}
+        <br>
+        <button type="submit" id="sendMessageButton">送信</button>
+    </form>
+</div>
+
+{% endblock %}

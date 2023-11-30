@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+<!--=================================================================-->
+{% block title %}極小画廊_サインアップ成功{% endblock %}
+{% block title2 %}極小画廊{% endblock %}
+{% block description %}アカウント新規登録{% endblock %}
+<!--=================================================================-->
+{% block contents %}
+<div>
+    <h1 style="text-align: center;">登録が完了しました！</h1>
+    <br><br><br><br>
+    <p style="text-align: center;"><a href="{% url "accounts:login" %}">＞＞ログインはこちら＜＜</a></p>
+    <br><br><br>
+</div>
+{% endblock %}

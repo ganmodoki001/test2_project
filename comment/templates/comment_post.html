@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+<!--=================================================================-->
+{% block title %}極小画廊_コメント投稿{% endblock %}
+{% block title2 %}極小画廊{% endblock %}
+{% block description %}作品に対する感想を伝えましょう{% endblock %}
+<!--=================================================================-->
+    {% block contents %}
+    <div style="width: 50%; margin: 0 auto; text-align: center;">
+        <form method="POST" enctype="multipart/form-data">
+            <h3>コメント投稿</h3>
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <th>文章</th>
+                    <td>{{ form.comment }}</td>
+                </tr>
+            </table>
+            <button type="submit">コメントする</button>
+            <br><br>
+        </form>
+    </div>
+    {% endblock %}

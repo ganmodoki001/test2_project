@@ -1,0 +1,38 @@
+{% extends "base.html" %} 
+{% load static %}
+<!--=================================================================-->
+{% block title %}『{{ object.title }}』_極小画廊{% endblock %}
+{% block title2 %}極小画廊{% endblock %}
+{% block description %}詳細ページ{% endblock %}
+<!--=================================================================-->
+{% block contents %}
+
+<div style="width: 50%; margin: 0 auto; text-align: center;">
+    <br>
+    <p font="font-size: 70%;">{{ object.posted_at }}に投稿</p>
+    <a href="{% url "print:user_list" user=object.user.id %}">
+        <p font="font-size: 70%;">投稿者：{{ object.user.username }}</p>
+    </a>
+    <br>
+    <h1>『{{ object.title }}』</h1>
+    <p><img src="{{ object.image }}"></P>
+    <a href="{% url "print:prints_cat" category=object.category.id %}">
+        <p font="font-size: 70%;">カテゴリ：{{ object.category.title }}</p>
+    </a>
+    <br>
+    <p>{{ object.comment }}<p>
+    <br>
+    {% if user.is_authenticated %}
+    <p><a href="{% url "comment:comment_post" post_id=record.pk %}">この作品へコメントする</a></p>
+    <p><a href="{% url "comment:comment_list" post_id=record.pk %}">この作品へのコメントを見る</a></p>
+    {% endif %}
+    <br>
+    <!--投稿写真がログイン中のユーザーのものであるか確認-->
+    {% if request.user == object.user %}
+    <form method="POST">
+        <a href="{% url "print:post_delete" object.pk %}" style="color:red;">※削除する※</a> 
+    {% endif %}
+    <br><br><br>
+</div>
+
+{% endblock %}

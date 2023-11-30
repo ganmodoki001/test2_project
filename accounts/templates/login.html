@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+<!--=================================================================-->
+{% block title %}極小画廊_ログイン{% endblock %}
+{% block title2 %}極小画廊{% endblock %}
+{% block description %}ログインページ{% endblock %}
+<!--=================================================================-->
+      {% block contents %}
+      <div style="margin-left: 10px;">
+        <!--ユーザー名とパスワードが一致しない場合-->
+        {% if form.errors %}
+          <p style="color: red">ユーザー名とパスワードが一致しません</p>
+        {% endif %}
+        <!--ログインのフォームを配置-->
+        <form method="post">
+            {% csrf_token %}
+          <!--usernameのラベル(非表示)-->
+          <label for="Username">ユーザー名:</label>
+          <!--usernameの<>input>タグ出力-->
+          <!--name属性の値はLoginViewで定義されているフィールド名username-->
+          <input type="text"
+          name="username"
+          id="id_username"
+          maxlength="150"
+          autocomplete="username"
+          placeholder="ユーザー名"
+          required autofocus> 
+
+          <br><br>
+
+          <!--passwordのラベル(非表示)-->
+          <label for="Password">パスワード:</label>
+          <!--passwordの<>input>タグ出力-->
+          <!--name属性の値はLoginViewで定義されているフィールド名password-->
+          <input type="password"
+          name="password"
+          id="id_password"
+          autocomplete="current-password"
+          placeholder="パスワード"
+          required autofocus>
+          
+          <br><br>
+          <!--ログインボタン配置-->
+          <input type="submit" value="ログイン">
+          
+          <!--パスワードリセットページのリンクテキスト-->
+          <!--ログイン直後のリダイレクト先(トップページ)のURLパターンを設定-->
+          <input type="hidden" name="next" value="{% url "print:index" %}">
+        </form>
+        <br><br><br>
+      </div>
+      {% endblock %}

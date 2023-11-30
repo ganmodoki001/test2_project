@@ -1,0 +1,210 @@
+@charset "UTF-8";
+body {
+	background-color: #88BDDA;
+	background-image: url(../print_img/背景用.gif);
+	background-size: contain;
+	margin: 0;
+	padding: 0;
+	line-height: 1.6;
+}
+#outer {
+	background-color: #A1DCFF;
+	margin: 0 auto;
+	width: 900px;
+}
+header {
+	padding: 20px 20px 10px 30px;
+	height: 100px;
+	background: linear-gradient(to bottom, #88BDDA, #A1DCFF);
+}
+footer{
+	margin-bottom: auto;
+}
+#content {
+	float: left;
+	width: 620px;
+}
+.inner {
+	margin: 0 10px;
+	padding: 10px 10px 20px 20px;
+}
+aside {
+	color: #676767;
+	font-size: 13px;
+	font-weight: normal;
+	width: 280px;
+	float: left;
+	padding: 17px 0 0 0;
+}
+.right-title {
+	font-size: 15px;
+	margin: 0 26px 0 0;
+	padding: 6px 10px 6px 20px;
+	font-weight: bold;
+	background-color: #C4F0EF;
+	color: #666;
+	border-top: 1px solid #6CA4D1;
+	border-right: 1px solid #6CA4D1;
+	border-left: 1px solid #6CA4D1;
+}
+.link {
+	margin: 0 26px 15px 0;
+	padding: 16px 10px 10px 14px;
+	border: 1px solid #6CA4D1;
+	background-color: #C3E6FF;
+}
+.link a {
+	font-weight: normal;
+	font-size: 14px;
+	color: #003366;
+	text-decoration: none;
+}
+.link a:hover {
+	text-decoration: underline;
+}
+ul {
+	margin: 0 0 0 1em;
+	padding: 0;
+}
+.link li {
+	list-style: none;
+	margin-bottom: 8px;
+}
+p {
+	margin: 1em 0;
+}
+img {
+	max-width: 100%;
+	height: auto;
+	border: 0;
+}
+hr {
+	border-width: 1px 0 0 0;
+	border-style: solid;
+	border-color: #ccc;
+	height: 1px;
+}
+a {
+	font-weight: normal;
+	color: #003366;
+}
+h1 {
+	font-size: 28px;
+	margin: 0;
+	padding: 10px 0 0 0;
+}
+h1 a {
+	font-weight: bold;
+	color: #000;
+	text-decoration: none;
+}
+h1 a:hover {
+	text-decoration: underline;
+}
+h2 {
+	font-size: 18px;
+	margin: 10px 0;
+	padding: 10px;
+	background-color: #E7F5FD;
+	border: 1px solid #C7DBE5;
+}
+h2 a {
+	font-weight: bold;
+	text-decoration: none;
+	color: #265699;
+}
+h3 {
+	font-size: 16px;
+	color: #000000;
+}
+h3 a {
+	text-decoration: none;
+	color: #265699;
+}
+footer {
+	color: #666;
+	font-size: 13px;
+	height: 100px;
+	clear: both;
+	text-align: center;
+}
+.pagetop {
+	padding-right: 35px;
+	text-align: right;
+}
+blockquote {
+	border: 1px solid #ccc;
+	padding: 5px;
+	margin: 10px;
+}
+
+
+
+.postList {         /* 投稿したものを並べる */
+	display: flex;
+	flex-wrap: wrap;/*折り返し*/
+	gap: 60px 1.4%;
+ }
+ .postList{
+	list-style:none;
+ }
+ .postList li {
+	width: 23.95%;
+ }
+ .postList li figure {
+	margin: 10px;
+ }
+ .postList li figure {
+	overflow: hidden;
+	padding-top: 56.25%; /* 画像の高さを幅の56.25%に固定する */
+ }
+ .postList li figure img {
+	width: 100%;
+ }
+ .postList li figure {
+	position: relative;
+	overflow: hidden;
+	padding-top: 60%;
+ }
+ .postList li figure img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 100%;
+	height: 100%;
+ }
+ .postList li figure img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+ }
+ .signup_f{
+	margin-left: 10px;
+ }
+
+
+ @font-face { 
+    /* ① ここにfont-familyで指定したい名前を書く*/
+    font-family: "my_font"; 
+  
+    /* フォントが置かれているパスを書く */ 
+    src: url("../print_font/KH-Dot-Dougenzaka-12.ttf") format("truetype") 
+}
+* {
+    font-family: "my_font", sans-serif;
+}
+
+
+
+
+
+
+
+
+
+

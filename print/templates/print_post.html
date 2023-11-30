@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% load static %}
+<!--=================================================================-->
+{% block title %}極小画廊_投稿{% endblock %}
+{% block title2 %}極小画廊{% endblock %}
+{% block description %}気軽にどんな事柄でも描いてみましょう{% endblock %}
+<!--=================================================================-->
+    {% block contents %}
+    <div style="width: 50%; margin: 0 auto; text-align: center;">
+        <div class="paint_area">
+            <br>
+            <canvas class="paint_box" id="test_canvas" width=200 height=100 style="border: solid 3px #000000; float: left;"></canvas>
+            <input type="button" id="pen1" value="極細モード">
+            <input type="button" id="pen2" value="細モード">
+            <input type="button" id="pen3" value="普通モード">
+            <input type="button" id="pen4" value="太モード">
+            <input type="button" id="pen5" value="極太モード">
+            <br><br>
+            <input type="color" id="color_changer" value="#FFC200">
+            <input type="button" id="fill_button" value="全体塗りつぶし">
+        </div>            
+            <br>
+            <input type="button" id="end_button" value="完成">
+            <br>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <th >カテゴリ</th>
+                    <td>{{ form.category }}</td>
+                </tr>
+                <tr>
+                    <th>タイトル</th>
+                    <td>{{ form.title }}</td>
+                </tr>
+                <tr>
+                    <th>コメント</th>
+                    <td>{{ form.comment }}</td>
+                </tr>
+                <tr hidden>
+                    <th>イラスト</th>
+                    <td>{{ form.image }}</td>
+                </tr>
+            </table>
+            <p style="color: red;">「完成」ボタンをクリックしないと投稿されません。</P>
+            <button type="submit">投稿する</button>
+            <br><br>
+        </form>
+    </div>
+
+    <script type="なでしこ">
+        色変更ボタン＝「#color_button」のDOM要素取得。
+        完成ボタン＝「#end_button」のDOM要素取得。
+        塗りつぶしボタン＝「#fill_button」のDOM要素取得。
+        ペン１ボタン＝「#pen1」のDOM要素取得。
+        ペン２ボタン＝「#pen2」のDOM要素取得。
+        ペン３ボタン＝「#pen3」のDOM要素取得。
+        ペン４ボタン＝「#pen4」のDOM要素取得。
+        ペン５ボタン＝「#pen5」のDOM要素取得。
+        描画範囲＝「canvas#test_canvas」のDOM要素取得。
+        描画範囲へ描画開始。
+        
+        現モード＝3
+        クリックフラグ＝オフ。
+        元ｘ＝０。元ｙ＝０。今ｘ＝０。今ｙ＝０。
+        
+        ペン１ボタンをクリックした時には、
+        　　現モード＝0.7
+        ここまで。
+        
+        ペン２ボタンをクリックした時には、
+        　　現モード＝1.7
+        ここまで。
+        
+        ペン３ボタンをクリックした時には、
+        　　現モード＝3
+        ここまで。
+        
+        ペン４ボタンをクリックした時には、
+        　　現モード＝6
+        ここまで。
+        
+        ペン５ボタンをクリックした時には、
+        　　現モード＝10
+        ここまで。
+        
+        #-------------
+        描画中キャンバスをマウス押した時には、
+        　　色設定＝「#color_changer」の「value」をDOM属性取得。
+        　　「｛色設定｝」に塗色設定。
+        　　「｛色設定｝」に線色設定。
+        　　クリックフラグ＝オン。元ｘ＝マウスX。元ｙ＝マウスY。
+        ここまで。
+        
+        描画中キャンバスをマウス移動した時には、
+        　　もし、クリックフラグがオフならば、戻る。
+        　　色設定＝「#color_changer」の「value」をDOM属性取得。
+        　　「｛色設定｝」に塗色設定。
+        　　「｛色設定｝」に線色設定。
+        　　今ｘ＝マウスX。今ｙ＝マウスY。絵描。
+        　　もし、現モードが4以下ならば、戻る。
+        　　　　[今ｘ,今ｙ]へ現モード/2-2の円描画。
+        ここまで。
+        
+        描画中キャンバスをマウス離した時には、
+        　　クリックフラグ＝オフ。
+        ここまで。
+        
+        ●絵描
+        　　現モードに線太設定。
+        　　[元ｘ,元ｙ]から[今ｘ,今ｙ]へ線描画。
+        　　元ｘ＝今ｘ。元ｙ＝今ｙ。
+        ここまで。
+        #-------------
+        
+        塗りつぶしボタンをクリックした時には、
+        　　色設定＝「#color_changer」の「value」をDOM属性取得。
+        　　「｛色設定｝」に塗色設定。
+        　　「｛色設定｝」に線色設定。
+        　　[0, 0, 200, 100]へ四角描画。
+        ここまで。
+        
+        完成ボタンをクリックした時には、
+        　　取得画像＝描画データURL変換。
+        　　「#id_image」に、「｛取得画像｝」をテキスト設定
+        ここまで。
+    </script> <!--なでしこ参考ページ:https://nadesi.com/v3/doc/index.php?plugin_browser&show-->
+    {% endblock %}

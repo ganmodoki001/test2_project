@@ -1,0 +1,21 @@
+{% load static %}
+<section id="content">
+    <div class="inner"><h2>作品一覧</h2>
+        <ul class="postList">
+          {% for record in object_list %}
+            <li>
+             <a href="{% url "print:print_detail" record.pk %}">
+               <figure class="pic">
+                 <img src="{{ record.image }}">
+               </figure>
+              </a>
+              <div>
+                <a href="{% url "print:prints_cat" category=record.category.id %}">
+                  <p style="margin-top: 0px; margin-bottom: 3px; font-size: 50%; text-align: center;">{{ record.category.title }}</p>
+                </a>
+                <p style="margin-top: 0px; margin-bottom: 3px; font-size: 70%; text-align: center;">『{{ record.title }}』</p>
+              </div>
+            </li>
+            {% endfor %}
+      </div>
+</section>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+<!--=================================================================-->
+{% block title %}極小画廊_コメント{% endblock %}
+{% block title2 %}極小画廊{% endblock %}
+{% block description %}コメント{% endblock %}
+<!--=================================================================-->
+    {% block contents %}
+    <div class="inner"><h2>コメント一覧</h2>
+        <ul style="list-style: none;">
+          {% for record in object_list %}
+            <li>
+              <div style="width: 80%; margin: 0 auto;">
+                <p style="margin-top: 0px; margin-bottom: 3px; font-size: 30%; text-align: center;">{{ record.posted_at }}のコメント</p>
+                <p style="margin-top: 0px; margin-bottom: 3px; font-size: 50%; text-align: center;">『{{ record.comment }}』</p>
+              </div>
+              <hr style="background-color: #6CA4D1;">
+            </li>
+            {% endfor %}
+      </div>
+    {% endblock %}
+
+
+
+
+
+ 

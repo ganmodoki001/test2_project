@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+<!--=================================================================-->
+{% block title %}極小画廊_削除{% endblock %}
+{% block title2 %}極小画廊{% endblock %}
+{% block description %}投稿作品の削除{% endblock %}
+<!--=================================================================-->
+{% block contents %}
+<br>
+    <form method="POST" style="text-align: center;">
+        <br>
+        <p style="color:red;">削除してもよろしいですか？</p>
+        {% csrf_token %}
+        <button type="submit">削除</button>
+        <br><br>
+        <a href="{% url "print:print_detail" object.pk %}">＞＞キャンセルして戻る＜＜</a>
+        <br><br>
+{% endblock %}

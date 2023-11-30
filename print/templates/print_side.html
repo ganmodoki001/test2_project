@@ -1,0 +1,20 @@
+{% load static %}
+<aside>
+    <div class="right-title">メニュー</div>
+    <div class="link">
+        <ul>
+            <li><a href="{% url "print:index" %}">トップページ</a></li>
+            <li><a href="{% url "print:contact" %}">お問い合わせ</a></li>
+            {% if user.is_authenticated %}
+            <!--ログイン中のメニュー-->
+            <li><a href="{% url "print:post" %}">絵を描く</a></li>            
+            <li><a href="{% url "print:mypage" %}">マイページ</a></li>
+            <li><a href="{% url "accounts:logout" %}">ログアウト</a></li>
+            {% else %}
+            <!--非ログイン状態のメニュー-->  
+            <li><a href="{% url "accounts:login" %}">ログイン</a></li>          
+            <li><a href="{% url "accounts:signup" %}">新規アカウント登録</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</aside>

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+<!--=================================================================-->
+{% block title %}極小画廊_サインアップ{% endblock %}
+{% block title2 %}極小画廊{% endblock %}
+{% block description %}アカウント新規登録{% endblock %}
+<!--=================================================================-->
+{% block contents %}
+<div style="margin-left: 10px;">
+    <form method="post">
+        <br>
+        {% csrf_token %}
+        <!--formからフィールドを取り出す-->
+        {% for field in form %}
+            <p>
+                <!--ラベル出力-->
+                {{ field.label_tag }}<br>
+                <!--<input>タグを出力-->
+                {{ field }}
+                {% if field.help_text %}
+                    <small style="color: grey">{{ field.help_text }}</small>
+                {% endif %}
+                <!--エラー発生時のテキストerrorsを出力-->
+                {% for error in field.errors %}
+                    <p style="color: red">{{ error }}</p>
+                {% endfor %}
+            </P>
+        {% endfor %}
+        <!--Sign Upボタンを出力-->
+        <input type="submit" value="Sign Up">
+    </form>
+    <!--トップページのリンクテキスト-->
+    <br>
+    <p><a href="{% url "print:index" %}">
+        登録をやめてトップページに戻る</a>
+    </p>
+    <br><br><br>
+</div>
+
+{% endblock %}

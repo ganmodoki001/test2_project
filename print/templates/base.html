@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href={% static "print_css/base_css.css" %}>
+        <link rel="icon" type="image/x-icon" href="{% static "print_img/favicon.ico" %}">
+        <script defer src='https://nadesi.com/v3/cdn.php?v=3.4.21&f=release/wnako3.js&run'></script>
+        <script defer src='https://nadesi.com/v3/cdn.php?v=3.4.21&f=release/plugin_csv.js'></script>
+        <script defer src='https://nadesi.com/v3/cdn.php?v=3.4.21&f=release/plugin_datetime.js'></script>
+        <script defer src='https://nadesi.com/v3/cdn.php?v=3.4.21&f=release/plugin_markup.js'></script>
+        <script defer src='https://nadesi.com/v3/cdn.php?v=3.4.21&f=release/plugin_kansuji.js'></script>
+        <script defer src='https://nadesi.com/v3/cdn.php?v=3.4.21&f=release/plugin_turtle.js'></script>
+    </head>
+
+    <body>
+
+        <div id="outer">
+            <header>
+                <a href="{% url 'print:index' %}" style="text-decoration: none;"> 
+                <h1>{% block title2 %}{% endblock %}</h1>
+                </a>
+                <p>{% block description %}{% endblock %}</p>
+            </header>
+            <hr style="background-color: #6CA4D1;">
+
+            
+            <main>
+                {% block contents %}{% endblock %}
+            </main>
+
+            <footer>
+                {% include "pagination.html" %}
+                <br><br><br>
+                © 2023 単位認定試験
+            </footer>
+        </div>
+
+    </body>
+</html>

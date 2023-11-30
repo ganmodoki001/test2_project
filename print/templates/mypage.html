@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+<!--=================================================================-->
+{% block title %}極小画廊_マイページ{% endblock %}
+{% block title2 %}極小画廊{% endblock %}
+{% block description %}マイページ{% endblock %}
+<!--=================================================================-->
+{% block contents %}
+{% if user.is_authenticated %}
+<br>
+<div style="text-align: center;">
+    <h1>{{ user.username }} さんのマイページ</h1>
+    {% if object_list.count == 0 %}
+        <p>{{ user.username }}さんの投稿はありません。</p>
+    {% else %}
+        <p>投稿 <strong>{{ object_list.count }}</strong>件</p>
+    {% endif %}
+    <a href="{% url "print:post" %}">＞＞投稿する＜＜</a>
+</div>
+<hr style="background-color: #6CA4D1;">
+{% endif %}
+
+{% include "print_posts.html" %}
+{% include "print_side.html" %}
+{% endblock %}
